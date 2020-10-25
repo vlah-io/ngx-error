@@ -1,27 +1,61 @@
-# NgxError
+@vlah.io/ngx-error
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Set of reusable Angular components to help displaying errors.
 
-## Development server
+### Usage (code example)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The directive.
 
-## Code scaffolding
+```
+    <div [vlahioErrorPage]="error" [content]="el" [height]="'100%'"></div>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    ...
 
-## Build
+    error: ErrorInterface;
+    el: HTMLElement;
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The component.
+```
+    <div [error]="error" [height]="height" [content]="content"></div>
 
-## Running unit tests
+    ...
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    error: ErrorInterface;
+    el: HTMLElement;
+    height: string;
+```
 
-## Running end-to-end tests
+The service worker.
+```
+      constructor(private errorPageWorker: ErrorPageWorker,
+                  private factoryWorker: FactoryWorker
+      ) {
+      }
+    
+      showPageError(error: ErrorInterface): void {
+        if (this.pageErrorCompRef) {
+          this.errorPageWorker.destroy(this.pageErrorCompRef);
+        }
+        const removeCompRef = this.factoryWorker.make(RemoveComponent);
+        removeCompRef.instance.remove.subscribe(
+          () => {
+            this.removePageError();
+          }
+        );
+        this.pageErrorCompRef = this.errorPageWorker.render(
+          error,
+          {
+            height: '100%',
+            content: removeCompRef.location.nativeElement
+          }
+        );
+      }
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The CSS assets.
+```
+    @import "... ngx-error/src/assets/css/error-page.css";
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For more details read [here](https://github.com/vlah-io/ngx-error/blob/master/INSTALLATION.md).

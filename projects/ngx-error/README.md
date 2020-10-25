@@ -1,24 +1,61 @@
-# NgxError
+@vlah.io/ngx-error
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Set of reusable Angular components to help displaying errors.
 
-## Code scaffolding
+### Usage (code example)
 
-Run `ng generate component component-name --project ngx-error` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-error`.
-> Note: Don't forget to add `--project ngx-error` or else it will be added to the default project in your `angular.json` file. 
+The directive.
 
-## Build
+```
+    <div [vlahioErrorPage]="error" [content]="el" [height]="'100%'"></div>
 
-Run `ng build ngx-error` to build the project. The build artifacts will be stored in the `dist/` directory.
+    ...
 
-## Publishing
+    error: ErrorInterface;
+    el: HTMLElement;
+```
 
-After building your library with `ng build ngx-error`, go to the dist folder `cd dist/ngx-error` and run `npm publish`.
+The component.
+```
+    <div [error]="error" [height]="height" [content]="content"></div>
 
-## Running unit tests
+    ...
 
-Run `ng test ngx-error` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    error: ErrorInterface;
+    el: HTMLElement;
+    height: string;
+```
 
-## Further help
+The service worker.
+```
+      constructor(private errorPageWorker: ErrorPageWorker,
+                  private factoryWorker: FactoryWorker
+      ) {
+      }
+    
+      showPageError(error: ErrorInterface): void {
+        if (this.pageErrorCompRef) {
+          this.errorPageWorker.destroy(this.pageErrorCompRef);
+        }
+        const removeCompRef = this.factoryWorker.make(RemoveComponent);
+        removeCompRef.instance.remove.subscribe(
+          () => {
+            this.removePageError();
+          }
+        );
+        this.pageErrorCompRef = this.errorPageWorker.render(
+          error,
+          {
+            height: '100%',
+            content: removeCompRef.location.nativeElement
+          }
+        );
+      }
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The CSS assets.
+```
+    @import "... ngx-error/src/assets/css/error-page.css";
+```
+
+For more details read [here](https://github.com/vlah-io/ngx-error/blob/master/INSTALLATION.md).

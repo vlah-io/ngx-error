@@ -1,12 +1,20 @@
-import { NgModule } from '@angular/core';
-import { NgxErrorComponent } from './ngx-error.component';
-
-
+import {NgModule} from '@angular/core';
+import {ErrorPageComponent} from './component/error-page.component';
+import {CommonModule} from '@angular/common';
+import {ErrorPageDirective} from './directive/error-page.directive';
 
 @NgModule({
-  declarations: [NgxErrorComponent],
   imports: [
+    CommonModule
   ],
-  exports: [NgxErrorComponent]
+  declarations: [
+    ErrorPageComponent,
+    ErrorPageDirective
+  ],
+  exports: [
+    ErrorPageComponent,
+    ErrorPageDirective
+  ]
 })
-export class NgxErrorModule { }
+export class NgxErrorModule {
+}

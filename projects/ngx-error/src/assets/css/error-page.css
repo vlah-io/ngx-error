@@ -1,0 +1,55 @@
+.vlahio-error-page {
+    margin: 0;
+    height: calc(100vh);
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.vlahio-error-page .vlahio-error-page-col {
+    align-self: center !important;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: center;
+}
+
+.vlahio-error-page .vlahio-error-page-col .vlahio-error-page-container {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 2px solid #01bcd4;
+    padding: 28px;
+    margin: 0 auto 1.5rem;
+}
+
+.vlahio-error-page .vlahio-error-page-col .vlahio-error-page-container .vlahio-error-page-code {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background-color: #01bcd4;
+    color: #fff;
+}
+
+.vlahio-error-page .vlahio-error-page-col .vlahio-error-page-container .vlahio-error-page-code h1 {
+    font-size: 5.625rem;
+    line-height: 220px;
+    font-weight: 300;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+.vlahio-error-page .vlahio-error-page-col h2 {
+    font-size: 1.875rem;
+    line-height: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    opacity: 0.8;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+/*# sourceMappingURL=error-page.css.map */
