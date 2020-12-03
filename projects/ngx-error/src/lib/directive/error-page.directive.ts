@@ -10,7 +10,7 @@ export class ErrorPageDirective {
   readonly divL2: HTMLElement;
   readonly divL3: HTMLElement;
   readonly divL4: HTMLElement;
-  private content: any;
+  private htmlElement: any;
 
   constructor(private elRef: ElementRef,
               private renderer: Renderer2,
@@ -24,20 +24,20 @@ export class ErrorPageDirective {
     this.renderer.appendChild(this.divL4, this.divL3);
   }
 
-  @Input('height')
-  set _height(str: string) {
+  @Input()
+  set height(str: string | undefined) {
     if (str) {
       this.renderer.setStyle(this.divL4, 'height', str);
     }
   }
 
-  @Input('content')
-  set _content(el: HTMLElement) {
-    if (this.content) {
-      this.removeChildNodes(this.divL3, {childNode: this.content});
+  @Input()
+  set content(el: HTMLElement | undefined) {
+    if (this.htmlElement) {
+      this.removeChildNodes(this.divL3, {childNode: this.htmlElement});
     }
     if (el) {
-      this.content = el;
+      this.htmlElement = el;
       this.renderer.appendChild(
         this.divL3,
         el
@@ -46,7 +46,7 @@ export class ErrorPageDirective {
   }
 
   @Input('vlahioErrorPage')
-  set _error(error: ErrorInterface | undefined) {
+  set error(error: ErrorInterface | undefined) {
     if (error) {
       this.render(error);
     } else {
@@ -96,9 +96,7 @@ export class ErrorPageDirective {
       [].slice
         .call(parent.childNodes)
         .filter(
-          (node: ChildNode) => {
-            return !(nodeName && node.nodeName.toLowerCase() !== nodeName.toLowerCase());
-          }
+          (node: ChildNode) => !(nodeName && node.nodeName.toLowerCase() !== nodeName.toLowerCase())
         )
         .reverse()
         .forEach(

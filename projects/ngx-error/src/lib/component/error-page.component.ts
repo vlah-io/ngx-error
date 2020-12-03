@@ -7,7 +7,7 @@ import {ErrorInterface} from '../interface/ngx-error.interface';
     <div [vlahioErrorPage]="error" [height]="height" [content]="content"></div>`
 })
 export class ErrorPageComponent {
-  @Input() error: ErrorInterface;
-  @Input() height: string;
-  @Input() content: HTMLElement;
+  @Input() error: ErrorInterface | undefined;
+  @Input() height: string | undefined;
+  @Input() content: HTMLElement | undefined;
 }

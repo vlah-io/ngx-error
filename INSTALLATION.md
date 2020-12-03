@@ -6,7 +6,7 @@ Package generated with `angular-cli` as follows
 ### Create new
 
 ```
-  ng new ngx-error --createApplication=false --prefix=vlah
+  ng new ngx-error --createApplication=false --prefix=vlahio
   cd ngx-error
 ```
 
@@ -14,7 +14,7 @@ Package generated with `angular-cli` as follows
 
 ```
   cd ngx-error
-  ng generate library ngx-error --prefix=vlah
+  ng generate library ngx-error --prefix=vlahio
 ```
 
 ### Generate test application

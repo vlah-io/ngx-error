@@ -11,8 +11,8 @@ import {ErrorInterface} from '../../../ngx-error/src/lib/interface/ngx-error.int
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public pageErrorCompRef: ComponentRef<ErrorPageComponent>;
-  public removeCompRef: ComponentRef<RemoveComponent>;
+  public pageErrorCompRef: ComponentRef<ErrorPageComponent> | undefined;
+  public removeCompRef: ComponentRef<RemoveComponent> | undefined;
   error404: ErrorInterface = {
     statusCode: 404,
     message: 'Some 404 error message'
@@ -54,7 +54,6 @@ export class AppComponent {
 
     if (this.removeCompRef) {
       this.factoryWorker.destroy(this.removeCompRef);
-      delete this.factoryWorker;
     }
   }
 }
