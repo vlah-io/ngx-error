@@ -1,11 +1,11 @@
 {
   "name": "@vlah.io/ngx-error",
-  "version": "11.0.1",
+  "version": "11.0.4",
   "peerDependencies": {
-    "@angular/common": "^11.0.3",
-    "@angular/core": "^11.0.3",
-    "@vlah.io/ngx-helper": "^11.0.2",
-    "@vlah.io/ngx-worker": "^11.0.1"
+    "@angular/common": "^11.0.5",
+    "@angular/core": "^11.0.5",
+    "@vlah.io/ngx-helper": "^11.0.5",
+    "@vlah.io/ngx-worker": "^11.0.5"
   },
   "dependencies": {
     "tslib": "^2.0.1"
