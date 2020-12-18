@@ -1,6 +1,6 @@
 {
   "name": "@vlah.io/ngx-error",
-  "version": "11.0.4",
+  "version": "11.0.5",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 5160",
